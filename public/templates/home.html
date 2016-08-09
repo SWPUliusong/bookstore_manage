@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">网站数据统计</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>统计项目</th>
+                            <th>数目</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">注册会员</th>
+                            <td>{{webInfo.userNum}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">书籍总数</th>
+                            <td>{{webInfo.bookNum}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">评论总数</th>
+                            <td>{{webInfo.commentNum}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">服务器状态</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>统计项目</th>
+                            <th>情况</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">操作系统名称</th>
+                            <td>{{serverInfo.name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">操作系统平台</th>
+                            <td>{{serverInfo.platform}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">平均负载(每15分钟)</th>
+                            <td>{{serverInfo.loadavg[2]}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="2">内存使用率：{{serverInfo.rss * 100 + '%'}}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="progress">
+                                    <div class="active progress-bar progress-bar-success progress-bar-striped"
+                                         role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: {{serverInfo.rss * 100 + '%'}}"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">联系方式</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;QQ：&nbsp;&nbsp;1418441382</li>
+                        <li class="list-group-item"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;邮箱：&nbsp;&nbsp;1418441382@qq.com</li>
+                        <li class="list-group-item"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;github：&nbsp;&nbsp;<a href="http://github.com/SWPUliusong">http://github.com/SWPUliusong</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

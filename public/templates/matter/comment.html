@@ -1,0 +1,28 @@
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>内容</th>
+        <th>发布时间</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="comment in comments">
+        <th scope="row" ng-bind="comment._id"></th>
+        <td class="comment-content" ng-bind="comment.content"></td>
+        <td ng-bind="comment.create_at | date: 'yyyy-mm-dd'"></td>
+        <td>
+            <div role="presentation" class="dropdown">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    操作<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a ng-click="deleteComment(comment._id)">删除</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

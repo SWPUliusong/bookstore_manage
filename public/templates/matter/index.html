@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="list-group">
+                <a href="#/matter/books/1" class="list-group-item menue-item-book">书籍管理</a>
+                <a href="#/matter/comments/1" class="list-group-item menue-item-comment">评论管理</a>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="page-header">
+                <h1>内容管理</h1>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="menue-item-book">
+                    <a ng-href="#/matter/books/1">书籍管理</a>
+                </li>
+                <li class="menue-item-comment">
+                    <a ng-href="#/matter/comments/1">评论管理</a>
+                </li>
+            </ul>
+
+            <div id="matter" ui-view="matter-item">
+
+            </div>
+
+            <nav class="pull-right">
+                <ul class="pagination">
+                    <li><a ng-href="#/matter/books/1" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li ng-repeat="p in pages"><a ng-href="#/matter/books/{{$index + 1}}">{{$index + 1}} </a></li>
+                    <li><a ng-href="#/matter/books/{{pages.length}}"><span aria-hidden="true">&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

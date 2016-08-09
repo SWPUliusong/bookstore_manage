@@ -1,0 +1,23 @@
+{
+  "name": "bookstore_manage",
+  "version": "1.0.0",
+  "description": "bookstore 后台管理系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SWPUliusong/bookstore_manage.git"
+  },
+  "author": "SWPUliusong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SWPUliusong/bookstore_manage/issues"
+  },
+  "homepage": "https://github.com/SWPUliusong/bookstore_manage#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
