@@ -1,23 +1,23 @@
 angular.module('book.ctrl', [])
-    .controller('homeCtrl', function($rootScope, $scope, $http) {
+    .controller('homeCtrl', function($rootScope, $scope, $http, URL) {
         $rootScope.title = "bookstore后台主页"
         angular.element(".menue-item-home").addClass("active").siblings().removeClass("active")
-        return $http.jsonp("http://localhost:3000/api/v1/manage/webInfo?callback=JSON_CALLBACK")
+        $http.jsonp(URL + "webInfo?callback=JSON_CALLBACK")
             .success(function(data) {
                 $scope.webInfo = data.webInfo
                 $scope.serverInfo = data.serverInfo
             })
     })
-    .controller('userCtrl', function($rootScope, $http, $scope) {
+    .controller('userCtrl', function($rootScope, $http, $scope, URL) {
         $rootScope.title = "用户管理"
         angular.element(".menue-item-user").addClass("active").siblings().removeClass("active")
-        $http.jsonp("http://localhost:3000/api/v1/manage/user?callback=JSON_CALLBACK")
+        $http.jsonp(URL + "user?callback=JSON_CALLBACK")
             .success(function(data) {
                 $scope.users = data
             })
 
         $scope.resetPas = function(id) {
-            $http.put("http://localhost:3000/api/v1/manage/user", 'id=' + id)
+            $http.put(URL + "user", 'id=' + id)
                 .success(function(data) {
                     alert("重置成功")
                 })
@@ -34,7 +34,7 @@ angular.module('book.ctrl', [])
         $scope.submitForm = function() {
             console.log($scope.data)
             if($scope.data.password === $scope.password_rep) {
-                $http.post("http://localhost:3000/api/v1/manage/user", $scope.data)
+                $http.post(URL + "user", $scope.data)
                     .success(function(res) {
                         $scope.users = res
                     })
@@ -48,14 +48,14 @@ angular.module('book.ctrl', [])
             return false
         }
     })
-    .controller("matter.books", function($scope, $http, $stateParams, $rootScope) {
+    .controller("matter.books", function($scope, $http, $stateParams, $rootScope, URL) {
         $rootScope.title = '内容管理-书籍'
         angular.element(".menue-item-matter").addClass("active").siblings().removeClass("active")
         angular.element(".menue-item-book").addClass("active").siblings().removeClass("active")
         $rootScope.pages = []   //分页
         var p = $stateParams.page
 
-        $http.jsonp("http://localhost:3000/api/v1/manage/matter/books?callback=JSON_CALLBACK&page=" + p)
+        $http.jsonp(URL + "matter/books?callback=JSON_CALLBACK&page=" + p)
             .success(function(res) {
                 $scope.books = res.books
                 var count = Math.ceil(res.total / 10)
@@ -67,7 +67,7 @@ angular.module('book.ctrl', [])
         $scope.deleteBook = function(id) {
             if(!confirm("确认删除")) return false
 
-            $http.delete("http://localhost:3000/api/v1/manage/matter/books?page=" + p +"&id=" + id)
+            $http.delete(URL + "matter/books?page=" + p +"&id=" + id)
                 .success(function(res) {
                     $scope.books = res[0]
                     $rootScope.pages = $rootScope.pages.slice(0, Math.ceil(res[1] / 10))
@@ -77,7 +77,7 @@ angular.module('book.ctrl', [])
                 })
         }
     })
-    .controller("matter.comments", function($scope, $http, $stateParams, $rootScope){
+    .controller("matter.comments", function($scope, $http, $stateParams, $rootScope, URL){
         $rootScope.title = '内容管理-评论'
         angular.element(".menue-item-matter").addClass("active").siblings().removeClass("active")
         angular.element(".menue-item-comment").addClass("active").siblings().removeClass("active")
@@ -85,7 +85,7 @@ angular.module('book.ctrl', [])
 
         var p = $stateParams.page
 
-        $http.jsonp("http://localhost:3000/api/v1/manage/matter/comments?callback=JSON_CALLBACK&page=" + p)
+        $http.jsonp(URL + "matter/comments?callback=JSON_CALLBACK&page=" + p)
             .success(function(res) {
                 $scope.comments = res.comments
                 var count = Math.ceil(res.total / 10)
@@ -97,7 +97,7 @@ angular.module('book.ctrl', [])
         $scope.deleteComment = function(id) {
             if(!confirm("确认删除")) return false
 
-            $http.delete("http://localhost:3000/api/v1/manage/matter/comments?page=" + p +"&id=" + id)
+            $http.delete(URL + "matter/comments?page=" + p +"&id=" + id)
                 .success(function(res) {
                     $scope.comments = res[0]
                     $rootScope.pages = $rootScope.pages.slice(0, Math.ceil(res[1] / 10))

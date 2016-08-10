@@ -1,4 +1,5 @@
 angular.module("bookstore_manage", ["ui.router", "book.ctrl"])
+    .constant("URL", "http://119.29.75.199:3000/api/v1/manage/")
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         $httpProvider.defaults.headers = {'Content-Type': 'application/json'}
 
